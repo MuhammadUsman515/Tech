@@ -1,4 +1,119 @@
-<div class="centered splash">
-	<img src="{{ splash_image or "/assets/frappe/images/frappe-framework-logo.svg" }}"
-		style="width: auto; max-width: 200px;">
+<div class="centered splash" id="frappe-splash">
+	<div class="splash-inner">
+		<div class="splash-logo-wrap">
+			<img src="{{ splash_image or '/assets/frappe/images/frappe-framework-logo.svg' }}"
+				class="splash-logo" alt="Loading…">
+			<div class="splash-ring"></div>
+		</div>
+		<div class="splash-progress-track">
+			<div class="splash-progress-bar" id="splash-progress-bar"></div>
+		</div>
+		<p class="splash-label">Loading your workspace…</p>
+	</div>
 </div>
+
+<style>
+.splash {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #f0f4ff 0%, #e8edff 100%);
+	z-index: 9999;
+	transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.splash.fade-out {
+	opacity: 0;
+	visibility: hidden;
+}
+.splash-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+}
+.splash-logo-wrap {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.splash-logo {
+	width: 52px;
+	height: 52px;
+	object-fit: contain;
+	animation: splash-pulse 1.8s ease-in-out infinite;
+}
+.splash-ring {
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #2563EB;
+	border-right-color: #7C3AED;
+	animation: splash-spin 0.9s linear infinite;
+}
+.splash-progress-track {
+	width: 160px;
+	height: 3px;
+	background: rgba(37,99,235,0.15);
+	border-radius: 999px;
+	overflow: hidden;
+}
+.splash-progress-bar {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #2563EB, #7C3AED);
+	border-radius: 999px;
+	transition: width 0.3s ease;
+	animation: splash-load 2.5s ease-out forwards;
+}
+.splash-label {
+	font-size: 13px;
+	font-weight: 500;
+	color: #6B7280;
+	margin: 0;
+	letter-spacing: 0.02em;
+	animation: splash-blink 1.8s ease-in-out infinite;
+}
+@keyframes splash-spin {
+	to { transform: rotate(360deg); }
+}
+@keyframes splash-pulse {
+	0%, 100% { transform: scale(1); opacity: 1; }
+	50% { transform: scale(0.94); opacity: 0.85; }
+}
+@keyframes splash-load {
+	0%   { width: 0%; }
+	30%  { width: 40%; }
+	60%  { width: 70%; }
+	85%  { width: 88%; }
+	100% { width: 95%; }
+}
+@keyframes splash-blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.5; }
+}
+</style>
+
+<script>
+(function() {
+	// Auto-remove splash when app is ready
+	document.addEventListener('app_ready', function() {
+		var bar = document.getElementById('splash-progress-bar');
+		var splash = document.getElementById('frappe-splash');
+		if (bar) bar.style.width = '100%';
+		setTimeout(function() {
+			if (splash) {
+				splash.classList.add('fade-out');
+				setTimeout(function() {
+					if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+				}, 500);
+			}
+		}, 300);
+	});
+})();
+</script>

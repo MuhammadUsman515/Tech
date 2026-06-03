@@ -194,3 +194,126 @@
 		}
 	}
 }
+
+// ─── Skeleton shimmer animation ───────────────────────────────────────────────
+.list-skeleton-box,
+.skeleton-card,
+[class*="skeleton"] {
+	position: relative;
+	overflow: hidden;
+	background-color: var(--skeleton-bg) !important;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(255, 255, 255, 0.45) 50%,
+			transparent 100%
+		);
+		background-size: 200% 100%;
+		animation: shimmer 1.4s ease-in-out infinite;
+	}
+}
+
+@keyframes shimmer {
+	0%   { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+
+// ─── Focus states – keyboard-only focus rings ─────────────────────────────────
+body:not(.using-mouse) {
+	.btn:focus,
+	a:focus,
+	input:focus,
+	select:focus,
+	textarea:focus {
+		outline: 2px solid #2563EB !important;
+		outline-offset: 2px;
+		box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12) !important;
+	}
+}
+
+// ─── Page transition subtle fade ─────────────────────────────────────────────
+.page-container {
+	animation: page-fade-in 0.2s ease both;
+}
+
+@keyframes page-fade-in {
+	from { opacity: 0; transform: translateY(4px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Better scrollbars ────────────────────────────────────────────────────────
+.main-section,
+.modal-body,
+.notifications-list {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(37, 99, 235, 0.2) transparent;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(37, 99, 235, 0.2);
+		border-radius: 999px;
+
+		&:hover {
+			background: rgba(37, 99, 235, 0.35);
+		}
+	}
+}
+
+// ─── Better indicator pills ───────────────────────────────────────────────────
+.indicator-pill {
+	border-radius: 999px;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+}
+
+// ─── Form section head – better hierarchy ─────────────────────────────────────
+.section-head {
+	font-size: 13px !important;
+	font-weight: 600 !important;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--gray-500) !important;
+}
+
+// ─── Breadcrumb improvements ──────────────────────────────────────────────────
+.breadcrumb-container {
+	.breadcrumb-item {
+		font-size: 12px;
+
+		a:hover {
+			color: #2563EB;
+			text-decoration: none;
+		}
+	}
+}
+
+// ─── Better empty state ───────────────────────────────────────────────────────
+.msg-box {
+	padding: 60px var(--padding-md);
+
+	.msg-box-icon {
+		opacity: 0.3;
+	}
+}
+
+// ─── Smooth transitions everywhere ────────────────────────────────────────────
+a,
+.btn,
+.nav-link,
+.dropdown-item,
+.list-row-container,
+.standard-sidebar-item {
+	transition-duration: 0.15s !important;
+	transition-timing-function: ease !important;
+}

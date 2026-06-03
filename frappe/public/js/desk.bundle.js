@@ -80,6 +80,8 @@ import "./frappe/views/breadcrumbs.js";
 import "./frappe/views/factory.js";
 import "./frappe/views/pageview.js";
 
+import "./frappe/ui/page_progress.js";
+import "./frappe/ui/ux_enhancements.js";
 import "./frappe/ui/toolbar/awesome_bar.js";
 import "./frappe/ui/notifications/notifications.js";
 import "./frappe/ui/toolbar/search.js";

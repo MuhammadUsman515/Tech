@@ -421,9 +421,7 @@ frappe.show_alert = frappe.toast = function (message, seconds = 7, actions = {})
 	};
 
 	if (typeof message === "string") {
-		message = {
-			message: message,
-		};
+		message = { message: message };
 	}
 
 	if (!$("#dialog-container").length) {
@@ -438,47 +436,61 @@ frappe.show_alert = frappe.toast = function (message, seconds = 7, actions = {})
 	}
 
 	const indicator = message.indicator || "blue";
+	// Effective display time for the timer bar (CSS var in seconds)
+	const display_seconds = seconds > 2 ? seconds - 0.4 : seconds;
 
 	const div = $(`
-		<div class="alert desk-alert ${indicator}" role="alert">
+		<div class="alert desk-alert ${indicator}" role="alert"
+			style="--toast-duration: ${display_seconds}s">
 			<div class="alert-message-container">
 				<div class="alert-title-container">
 					<div>${frappe.utils.icon(icon, "lg")}</div>
 					<div class="alert-message">${message.message}</div>
 				</div>
-				<div class="alert-subtitle">${message.subtitle || ""}</div>
+				${message.subtitle ? `<div class="alert-subtitle">${message.subtitle}</div>` : ""}
 			</div>
 			<div class="alert-body" style="display: none"></div>
-			<a class="close">${frappe.utils.icon("x")}</a>
+			<a class="close" title="Dismiss">${frappe.utils.icon("x")}</a>
+			<div class="toast-timer"></div>
 		</div>
 	`);
 
-	div.hide().appendTo("#alert-container").show();
+	div.appendTo("#alert-container");
 
 	if (message.body) {
 		div.find(".alert-body").show().html(message.body);
 	}
 
-	div.find(".close, button").click(function () {
+	const dismiss = () => {
 		div.addClass("out");
-		setTimeout(() => div.remove(), 800);
-		return false;
+		setTimeout(() => div.remove(), 420);
+	};
+
+	div.find(".close").on("click", (e) => {
+		e.preventDefault();
+		dismiss();
 	});
 
-	Object.keys(actions).map((key) => {
+	// Pause timer on hover
+	let timeout_id;
+	const start_timer = (delay) => {
+		timeout_id = setTimeout(dismiss, delay * 1000);
+	};
+
+	div.on("mouseenter", () => {
+		clearTimeout(timeout_id);
+		div.find(".toast-timer").css("animation-play-state", "paused");
+	}).on("mouseleave", () => {
+		// Resume with remaining ~2s after mouse leaves
+		div.find(".toast-timer").css("animation-play-state", "running");
+		start_timer(2);
+	});
+
+	Object.keys(actions).forEach((key) => {
 		div.find(`[data-action=${key}]`).on("click", actions[key]);
 	});
 
-	if (seconds > 2) {
-		// Delay for animation
-		seconds = seconds - 0.8;
-	}
-
-	setTimeout(() => {
-		div.addClass("out");
-		setTimeout(() => div.remove(), 800);
-		return false;
-	}, seconds * 1000);
+	start_timer(display_seconds);
 
 	return div;
 };

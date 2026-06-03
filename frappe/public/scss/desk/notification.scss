@@ -95,10 +95,11 @@
 	min-height: 480px;
 	position: absolute;
 	top: 0;
-	box-shadow: rgba(0, 0, 0, 0.1) 8px 0px 8px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
 	background-color: var(--bg-color);
 	height: 100vh;
 	overflow: hidden;
+	border-radius: 0 12px 12px 0;
 
 	.notification-list-header {
 		margin: 0px 10px;
@@ -143,10 +144,15 @@
 			color: var(--text-light);
 			font-weight: var(--weight-medium);
 			cursor: pointer;
+			transition: color 0.15s ease;
+
+			&:hover {
+				color: var(--text-color);
+			}
 
 			&.active {
-				color: var(--text-color);
-				border-bottom: 1px solid var(--primary-color);
+				color: #2563EB;
+				border-bottom: 2px solid #2563EB;
 			}
 		}
 	}

@@ -85,10 +85,11 @@
 	flex-direction: column;
 	padding-inline: var(--padding-sm);
 	border-radius: var(--border-radius);
+	transition: background-color 0.1s ease;
 
 	&:focus {
 		.list-row {
-			background-color: var(--highlight-color);
+			background-color: #EFF6FF;
 		}
 	}
 
@@ -97,11 +98,11 @@
 	}
 
 	&:hover {
-		background-color: var(--highlight-color);
+		background-color: #EFF6FF;
 	}
 
 	&:hover .level-right {
-		background-color: var(--highlight-color);
+		background-color: #EFF6FF;
 	}
 }
 

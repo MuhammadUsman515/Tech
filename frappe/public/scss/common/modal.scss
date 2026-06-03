@@ -2,6 +2,44 @@ h5.modal-title {
 	margin: 0px !important;
 }
 
+// ─── Modern Modal Enhancements ───────────────────────────────────────────────
+.modal-content {
+	border-radius: 16px !important;
+	border: none !important;
+	box-shadow:
+		0 20px 60px rgba(0, 0, 0, 0.14),
+		0 4px 20px rgba(0, 0, 0, 0.08) !important;
+	overflow: hidden;
+}
+
+.modal-header {
+	background: var(--fg-color);
+	border-bottom: 1px solid var(--border-color) !important;
+
+	.modal-title {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: var(--gray-900);
+		letter-spacing: -0.1px;
+	}
+}
+
+.modal-footer {
+	background: var(--fg-color);
+	border-top: 1px solid var(--border-color) !important;
+	gap: 8px;
+}
+
+// Confirm / warn dialog – better centered layout
+.frappe-confirm-message {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--gray-700);
+	padding: 4px 0 8px;
+}
+
+// ─── Backdrop ─────────────────────────────────────────────────────────────────
+
 // Hack to fix incorrect padding applied by Bootstrap
 body.modal-open[style^="padding-right"] {
 	padding-right: 12px !important;
@@ -155,8 +193,9 @@ body.modal-open[style^="padding-right"] {
 }
 
 .modal.fade .modal-dialog {
-	transition: transform 0.2s ease;
-	transform: translateY(-15%);
+	transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+	transform: translateY(-20px) scale(0.97);
+	opacity: 0;
 }
 
 .modal.fade.slow .modal-dialog {
@@ -166,6 +205,7 @@ body.modal-open[style^="padding-right"] {
 
 .modal.show .modal-dialog {
 	transform: none;
+	opacity: 1;
 }
 
 .modal-minimize {
