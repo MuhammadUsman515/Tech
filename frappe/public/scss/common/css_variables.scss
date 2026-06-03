@@ -3,7 +3,8 @@ $disabled-input-height: 22px;
 
 :root,
 [data-theme="light"] {
-	--brand-color: var(--primary);
+	--primary: #2563EB;
+	--brand-color: #2563EB;
 
 	--padding-xs: 5px;
 	--padding-sm: 7px;
@@ -96,16 +97,17 @@ $disabled-input-height: 22px;
 	--awesomplete-hover-bg: var(--control-bg);
 
 	// Button Colors
-	--btn-primary: var(--gray-900);
+	--btn-primary: #2563EB;
+	--btn-primary-hover: #1D4ED8;
 	--btn-default-bg: var(--gray-100);
-	--btn-default-hover-bg: var(--gray-300);
-	--btn-ghost-hover-bg: var(--gray-200);
+	--btn-default-hover-bg: var(--gray-200);
+	--btn-ghost-hover-bg: var(--blue-50);
 
 	// Border Colors
-	--border-primary: var(--gray-900);
+	--border-primary: #2563EB;
 
 	// Other Colors
-	--sidebar-select-color: var(--gray-100);
+	--sidebar-select-color: #EFF6FF;
 
 	--scrollbar-thumb-color: var(--gray-400);
 	--scrollbar-track-color: var(--gray-200);
@@ -127,7 +129,8 @@ $disabled-input-height: 22px;
 	--code-block-bg: var(--gray-900);
 	--code-block-text: var(--gray-400);
 
-	--primary-color: var(--gray-900);
+	--primary-color: #2563EB;
+	--focus-default: 0 0 0 3px rgba(37, 99, 235, 0.15);
 	--btn-height: 28px;
 
 	// input
@@ -139,8 +142,8 @@ $disabled-input-height: 22px;
 	--checkbox-size: 14px;
 	--checkbox-color: var(--neutral-black);
 
-	--checkbox-focus-shadow: 0 0 0 2px var(--gray-300);
-	--checkbox-gradient: linear-gradient(180deg, var(--primary) -124.51%, var(--primary) 100%);
+	--checkbox-focus-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+	--checkbox-gradient: linear-gradient(180deg, #2563EB -124.51%, #1D4ED8 100%);
 	--checkbox-disabled-gradient: linear-gradient(
 		180deg,
 		var(--disabled-control-bg) -124.51%,

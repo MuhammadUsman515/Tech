@@ -1,0 +1,196 @@
+// ─── Global UI Improvements – Modern, User-Friendly Design ──────────────────
+
+// ─── Navbar Enhancements ──────────────────────────────────────────────────────
+.navbar {
+	box-shadow: 0 1px 0 var(--border-color), 0 2px 8px rgba(37, 99, 235, 0.04);
+
+	.nav-item {
+		border-radius: var(--border-radius-sm);
+		transition: background-color 0.15s ease;
+
+		&:hover {
+			background-color: var(--fg-hover-color);
+		}
+	}
+}
+
+// ─── Widget / Card Improvements ───────────────────────────────────────────────
+.widget {
+	border-radius: 12px;
+	transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+	&.shortcut-widget-box:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12) !important;
+	}
+
+	&.number-widget-box:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1) !important;
+	}
+
+	&.links-widget-box {
+		.link-item:hover .link-content {
+			color: #2563EB;
+		}
+	}
+}
+
+// ─── Indicator Pills – More vibrant ──────────────────────────────────────────
+.indicator-pill {
+	font-weight: 500;
+}
+
+// ─── Dropdown Improvements ────────────────────────────────────────────────────
+.dropdown-menu {
+	border-radius: 10px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+	border: 1px solid var(--border-color);
+	animation: dropdownFadeIn 0.15s ease;
+
+	.dropdown-item {
+		border-radius: 6px;
+		transition: background-color 0.1s ease;
+
+		&:hover {
+			background-color: #EFF6FF;
+			color: #2563EB;
+		}
+	}
+}
+
+@keyframes dropdownFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// ─── Modal Improvements ───────────────────────────────────────────────────────
+.modal-content {
+	border-radius: 16px;
+	border: none;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.modal-header {
+	border-bottom: 1px solid var(--border-color);
+	padding: 20px 24px 16px;
+}
+
+.modal-body {
+	padding: 20px 24px;
+}
+
+.modal-footer {
+	border-top: 1px solid var(--border-color);
+	padding: 16px 24px;
+	gap: 8px;
+}
+
+// ─── Form Improvements ────────────────────────────────────────────────────────
+.frappe-control {
+	.form-control {
+		border-radius: 8px;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+		&:focus {
+			border-color: #2563EB;
+			box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+		}
+	}
+}
+
+// ─── Page Head Improvements ───────────────────────────────────────────────────
+.page-head {
+	background-color: var(--bg-color);
+}
+
+// ─── Layout Main Section ─────────────────────────────────────────────────────
+.layout-main-section {
+	border-radius: 10px;
+}
+
+// ─── Table Improvements ───────────────────────────────────────────────────────
+.datatable {
+	.dt-header .dt-cell {
+		background: var(--gray-50);
+		font-weight: 600;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.4px;
+		color: var(--gray-600);
+	}
+
+	.dt-row:hover .dt-cell__content {
+		background-color: #EFF6FF;
+	}
+}
+
+// ─── Toast / Alert Improvements ──────────────────────────────────────────────
+.frappe-toast-container {
+	.alert {
+		border-radius: 10px;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	}
+}
+
+// ─── Search Bar ───────────────────────────────────────────────────────────────
+.search-bar {
+	.search-icon {
+		background-color: var(--gray-100);
+		border-radius: 8px;
+	}
+
+	.awesomplete input {
+		border-radius: 8px;
+		transition: box-shadow 0.15s ease;
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+		}
+	}
+}
+
+// ─── Avatar ──────────────────────────────────────────────────────────────────
+.avatar {
+	border: 2px solid rgba(37, 99, 235, 0.1);
+	transition: border-color 0.15s ease;
+
+	&:hover {
+		border-color: rgba(37, 99, 235, 0.3);
+	}
+}
+
+// ─── Checkbox Improvements ───────────────────────────────────────────────────
+.frappe-control[data-fieldtype="Check"] {
+	.custom-control-input:checked ~ .custom-control-label::before {
+		background-color: #2563EB;
+		border-color: #2563EB;
+	}
+}
+
+// ─── Progress bar ────────────────────────────────────────────────────────────
+.progress-bar {
+	background-color: #2563EB;
+}
+
+// ─── Tab / List sidebar active state ─────────────────────────────────────────
+.tabs-sidebar-container,
+.standard-sidebar {
+	.standard-sidebar-item {
+		&.selected,
+		&:hover {
+			background-color: #EFF6FF;
+			color: #2563EB;
+		}
+
+		&.selected {
+			font-weight: 500;
+		}
+	}
+}

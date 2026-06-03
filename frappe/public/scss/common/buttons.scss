@@ -113,14 +113,22 @@
 
 .btn.btn-primary {
 	background-color: var(--btn-primary);
-	color: var(--neutral);
+	color: #ffffff;
 	white-space: nowrap;
 	--icon-stroke: currentColor;
 	--icon-fill-bg: var(--btn-primary);
+	border-radius: 6px;
+	font-weight: 500;
+	transition: background-color 0.15s ease, box-shadow 0.15s ease;
+
+	&:hover {
+		background-color: var(--btn-primary-hover, #1D4ED8);
+		color: #ffffff;
+	}
 
 	&:active {
-		color: var(--gray-100) !important;
-		background-color: var(--invert-neutral) !important;
+		color: #ffffff !important;
+		background-color: #1E40AF !important;
 	}
 }
 
