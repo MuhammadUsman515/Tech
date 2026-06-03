@@ -14,7 +14,7 @@ class UserOnboarding {
 	init() {
 		addStyles();
 
-		let title = this.title || __("Welcome to Frappe!");
+		let title = this.title || __("Welcome to Tech!");
 		let onboarding_checklist = this.steps || [];
 		let header_icon = this.header_icon;
 		let me = this;
